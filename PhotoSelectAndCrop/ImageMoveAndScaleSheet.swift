@@ -106,7 +106,7 @@ struct ImageMoveAndScaleSheet: View {
                     }
                 }
             }
-            .padding(.bottom, (deviceOrientation.orientation == .portrait) ? 10 : 4)
+            .padding(.bottom, (deviceOrientation.orientation == .portrait) ? 20 : 4)
         }
         .edgesIgnoringSafeArea(.all)
         
@@ -167,7 +167,7 @@ struct ImageMoveAndScaleSheet: View {
             Image(systemName: "circle.fill")
                 .font(.custom("system", size: 45))
                 .opacity(0.9)
-                .foregroundColor( ( displayImage == nil ) ? .systemRed : .white)
+                .foregroundColor( ( displayImage == nil ) ? .systemGreen : .white)
             Image(systemName: "photo.on.rectangle")
                 .imageScale(.medium)
                 .foregroundColor(.black)
