@@ -3,7 +3,7 @@ Photo Select and Crop
 
 <img align="right" src="https://github.com/gymsymbol/PhotoSelectAndCrop/blob/main/Screenshots/screenViews.png" width="65%">
 
-This repository shows one way to integrate a UIImagePickerController into a SwiftUI app. Obtain
+This repository shows one way to integrate a UIImagePickerController into a SwiftUI app. A processImage() function send four items to the parent view:
 
 1) a copy of the original image,
 2) a scaled and / or cropped version of it,
