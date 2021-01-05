@@ -16,6 +16,8 @@ The CGFloat and CGPoint represent the scale and position of the original image u
 
 **Features:**
 
+- works in both portrait and landscape modes.
 
-> :point_right:  works in both portrait and landscape modes.
+- dark mode friendly.
+
 
