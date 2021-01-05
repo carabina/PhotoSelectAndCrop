@@ -3,7 +3,7 @@ Photo Select and Crop
 
 <img align="right" src="https://github.com/gymsymbol/PhotoSelectAndCrop/blob/main/Screenshots/screenViews.png" width="65%">
 
-This repository shows one way to integrate a UIImagePickerController into a SwiftUI app. It is meant to be similar to the stock Contcacts app where a user can select, scale and position an image to be cropped and saved as a conatct's photo. The example uses a `processImage()` function to send four items via bindings to the parent view:
+This repository shows one way to integrate a UIImagePickerController into a SwiftUI app. It is meant to be similar to the stock Contacts app where a user can select, scale and position an image to be cropped and saved as a conatct's photo. The example uses a `processImage()` function to send four items via bindings to the parent view:
 
 1) a copy of the original `UIImage`,
 2) a scaled and / or cropped `UIImage` version of it,
