@@ -1,7 +1,7 @@
 Photo Select and Crop
 =====================
 
-<img align="right" src="https://github.com/gymsymbol/PhotoSelectAndCrop/blob/main/Screenshots/screenGrid.png" width="60%">
+<img align="right" src="https://github.com/gymsymbol/PhotoSelectAndCrop/blob/main/Screenshots/screenViews.png" width="65%">
 
 This repository shows one way to integrate a UIImagePickerController into a SwiftUI app. Obtain
 
