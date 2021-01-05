@@ -14,7 +14,7 @@ The `CGFloat` and `CGPoint` represent the scale and position of the original ima
 
 > :point_up: By saving the original image and scale and position markers and passing them to the `ImageMoveAndScaleSheet` view, if the user taps the "Change photo" button, the original photo is scaled and positioned to allow subsequent adjustments.
 
-** works in both portrait and landscape modes **
+**Works in both portrait and landscape modes**
 
 
 
