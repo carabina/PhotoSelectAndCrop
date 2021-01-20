@@ -154,6 +154,14 @@ struct ImageMoveAndScaleSheet: View {
         .onAppear(perform: setCurrentImage )
     }
     
+    func HoleShapeMask() -> Path {
+        let rect = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        let insetRect = CGRect(x: inset, y: inset, width: UIScreen.main.bounds.width - ( inset * 2 ), height: UIScreen.main.bounds.height - ( inset * 2 ))
+        var shape = Rectangle().path(in: rect)
+        shape.addPath(Circle().path(in: insetRect))
+        return shape
+    }
+    
     //MARK: - Buttons, Labels
     
     private var cancelButton: some View {

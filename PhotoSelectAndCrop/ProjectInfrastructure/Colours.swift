@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreData
 
 extension Color {
 
@@ -124,5 +125,4 @@ extension Color {
     static var systemGray6: Color {
         return Color(UIColor.systemGray6)
     }
-    
 }

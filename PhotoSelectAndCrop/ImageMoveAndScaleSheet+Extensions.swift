@@ -12,13 +12,13 @@ extension ImageMoveAndScaleSheet {
     ///Code for mask obtained here:
     ///https://stackoverflow.com/questions/59656117/swiftui-add-inverted-mask
     
-    func HoleShapeMask() -> Path {
-        let rect = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-        let insetRect = CGRect(x: inset, y: inset, width: UIScreen.main.bounds.width - ( inset * 2 ), height: UIScreen.main.bounds.height - ( inset * 2 ))
-        var shape = Rectangle().path(in: rect)
-        shape.addPath(Circle().path(in: insetRect))
-        return shape
-    }
+//    func HoleShapeMask() -> Path {
+//        let rect = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+//        let insetRect = CGRect(x: inset, y: inset, width: UIScreen.main.bounds.width - ( inset * 2 ), height: UIScreen.main.bounds.height - ( inset * 2 ))
+//        var shape = Rectangle().path(in: rect)
+//        shape.addPath(Circle().path(in: insetRect))
+//        return shape
+//    }
 
     ///Called when the ImagePicker is dismissed.
     ///We want to measure the image received and determine its aspect ratio.
@@ -56,7 +56,7 @@ extension ImageMoveAndScaleSheet {
     }
     
     func resetImageOriginAndScale() {
-        
+        print("reposition")
         let screenAspect: CGFloat = getAspect()
 
         withAnimation(.easeInOut){
@@ -107,38 +107,46 @@ extension ImageMoveAndScaleSheet {
                 zoomAmount = 4.0
         }
         
+        ///If the view which presents the ImageMoveAndScaleSheet is embeded in a NavigationView then the vertical offset is off.
+        ///This appears to be a SwiftUI bug. So, we "pad" the function with this "adjust". YMMV.
+        let adjust: CGFloat = 4.0
         ///The following if statements keep the image filling the circle cutout
         ///in at least one dimension.
         if displayH >= diameter {
-            
             if newPosition.height > verticalOffset {
-                    newPosition = CGSize(width: newPosition.width, height: verticalOffset + inset)
-                    currentPosition = CGSize(width: newPosition.width, height: verticalOffset + inset)
+                print("1. newPosition.height > verticalOffset")
+                    newPosition = CGSize(width: newPosition.width, height: verticalOffset - adjust + inset)
+                    currentPosition = CGSize(width: newPosition.width, height: verticalOffset - adjust + inset)
             }
             
             if newPosition.height < ( verticalOffset * -1) {
-                    newPosition = CGSize(width: newPosition.width, height: ( verticalOffset * -1) - inset)
-                    currentPosition = CGSize(width: newPosition.width, height: ( verticalOffset * -1) - inset)
+                print("2. newPosition.height < ( verticalOffset * -1)")
+                    newPosition = CGSize(width: newPosition.width, height: ( verticalOffset * -1) - adjust - inset)
+                    currentPosition = CGSize(width: newPosition.width, height: ( verticalOffset * -1) - adjust - inset)
             }
             
         } else {
+            print("else: H")
                 newPosition = CGSize(width: newPosition.width, height: 0)
                 currentPosition = CGSize(width: newPosition.width, height: 0)
         }
         
         if displayW >= diameter {
             if newPosition.width > horizontalOffset {
+                print("3. newPosition.width > horizontalOffset")
                     newPosition = CGSize(width: horizontalOffset + inset, height: newPosition.height)
                     currentPosition = CGSize(width: horizontalOffset + inset, height: currentPosition.height)
             }
             
             if newPosition.width < ( horizontalOffset * -1) {
+                print("4. newPosition.width < ( horizontalOffset * -1)")
                     newPosition = CGSize(width: ( horizontalOffset * -1) - inset, height: newPosition.height)
-                    currentPosition = CGSize(width: ( horizontalOffset * -1 - inset), height: currentPosition.height)
+                    currentPosition = CGSize(width: ( horizontalOffset * -1) - inset, height: currentPosition.height)
 
             }
             
         } else {
+            print("else: W")
                 newPosition = CGSize(width: 0, height: newPosition.height)
                 currentPosition = CGSize(width: 0, height: newPosition.height)
         }
@@ -153,6 +161,7 @@ extension ImageMoveAndScaleSheet {
             resetImageOriginAndScale()
         }
     }
+    
     
     ///This func saves am image correctly in portrait mode. But not in landscape.
     func processImage() {
