@@ -9,7 +9,7 @@ import Combine
 import UIKit
 
 final class DeviceOrientation: ObservableObject {
-      enum Orientation {
+    enum Orientation {
         case portrait
         case landscape
     }
@@ -28,9 +28,6 @@ final class DeviceOrientation: ObservableObject {
                     return nil
                 }
             }
-            .assign(to: \.orientation, on: self)
-    }
-    deinit {
-        listener?.cancel()
+            .sink { [weak self] deviceOrientation in self?.orientation = deviceOrientation }
     }
 }
