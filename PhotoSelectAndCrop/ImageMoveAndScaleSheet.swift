@@ -154,6 +154,9 @@ struct ImageMoveAndScaleSheet: View {
         .onAppear(perform: setCurrentImage )
     }
     
+    ///Code for mask obtained here:
+    ///https://stackoverflow.com/questions/59656117/swiftui-add-inverted-mask
+    
     func HoleShapeMask() -> Path {
         let rect = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         let insetRect = CGRect(x: inset, y: inset, width: UIScreen.main.bounds.width - ( inset * 2 ), height: UIScreen.main.bounds.height - ( inset * 2 ))
