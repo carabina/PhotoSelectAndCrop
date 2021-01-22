@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct ContentView: View {
-    
+
+    @StateObject var orientation = DeviceOrientation()
+
     @State private var isShowingPhotoSelectionSheet = false
 
     @State private var originalImage: UIImage?
@@ -50,7 +52,7 @@ struct ContentView: View {
         .statusBar(hidden: isShowingPhotoSelectionSheet)
         .fullScreenCover(isPresented: $isShowingPhotoSelectionSheet, onDismiss: loadImage) {
             ImageMoveAndScaleSheet(originalImage: $originalImage, originalPosition: $position, originalZoom: $zoom, processedImage: $inputImage)
-                .environmentObject(DeviceOrientation())
+                .environmentObject(orientation)
         }
     }
     
